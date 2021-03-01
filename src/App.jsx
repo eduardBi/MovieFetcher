@@ -6,22 +6,30 @@ import {useSelector,useDispatch} from "react-redux";
 
 
 function App() {
-  
-
+  let [uploadMoviePages,setUploadMoviePages]=useState(6)
+// количество страниц которые я буду подгружать (при первой загрузке подгружаются 5 страниц)
   let movies=useSelector(e=>e)
+//получаю список фильмов из саги 
 
   const dis=useDispatch()
   useEffect(()=>{
-    dis({type:'REQUEST_MOVIES'})
+    for(let i=1;i<uploadMoviePages;i++){
+      dis({type:"REQUEST_MOVIES",page:i})
+    }
+    //добавляю первые 5 страниц с сервера при первой загрузке
   },[])
   
+
+  const handleUploadOnScroll=()=>{
+    setUploadMoviePages(uploadMoviePages+1)
+    dis({type:"REQUEST_MOVIES",page:uploadMoviePages})
+  }
 
   return (
           <ul>
             {movies.map(e=><li>{e.title}</li>)}
-            <button onClick={()=>dis({type:"REQUEST_MOVIES",action:5})}>awsa</button>
+            <button onClick={handleUploadOnScroll}>awsa</button>
           </ul>
-
      );
 }
 

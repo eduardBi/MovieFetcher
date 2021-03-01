@@ -10,11 +10,10 @@ const SagaFetchAsyncMovie= (API_KEY,page)=>{
 
 }
  
-export function*  FetchMovieList(data){
+export function*  FetchMovieList(action){
     //отправка запроса 
-       console.log( data);
     try {
-        const data = yield call((page)=>SagaFetchAsyncMovie('dba73a007a1296ead2116cc50b2c5033',page));
+        const data = yield call((page)=>SagaFetchAsyncMovie('dba73a007a1296ead2116cc50b2c5033',action.page));
         yield put({type: "SUCCESS_MOVIES", payload: data.results});
      } catch (e) {
         yield put({type: "FAIL_MOVIES", message: e.message});
