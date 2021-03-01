@@ -19,6 +19,22 @@ function App() {
     //добавляю первые 5 страниц с сервера при первой загрузке
   },[])
   
+  const uploadOnMouseScroll = e => {
+    let fullHeight=document.body.scrollHeight;
+    let currentHeightPosition=window.pageYOffset 
+    let heightOfWindow=document.documentElement.clientHeight
+    if(fullHeight-300<currentHeightPosition+heightOfWindow){
+     handleUploadOnScroll()
+    }
+  };
+
+
+  useEffect(() => {
+    window.addEventListener("scroll", uploadOnMouseScroll);
+    return () => {
+      window.removeEventListener("scroll", uploadOnMouseScroll);
+    };
+  });
 
   const handleUploadOnScroll=()=>{
     setUploadMoviePages(uploadMoviePages+1)
@@ -28,7 +44,7 @@ function App() {
   return (
           <ul>
             {movies.map(e=><li>{e.title}</li>)}
-            <button onClick={handleUploadOnScroll}>awsa</button>
+            <button>awsa</button>
           </ul>
      );
 }
