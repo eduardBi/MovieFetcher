@@ -3,15 +3,17 @@ import { Dispatch } from "redux";
 import Stars from "./Stars";
 import MoviePoster from "./MoviePoster";
 import {MoviePosterData } from "./MoviePoster";
+import {useSelector,useDispatch} from "react-redux";
 
+const  MovieList:React.FC=()=>{
 
-interface MovieListProps{
-    dis:Dispatch
-    movies:MoviePosterData[]
-}
+  let moviesList=useSelector<[],MoviePosterData[]>(e=>{return e});
+  console.log(moviesList)
+   //получаю список фильмов из саги 
+  let [uploadMoviePages,setUploadMoviePages]=useState<number>(3)
+    //количество загружаемых страниц 
 
-const  MovieList:React.FC<MovieListProps>=({dis,movies})=>{
-  let [uploadMoviePages,setUploadMoviePages]=useState<number>(6)
+  let dis=useDispatch()  
 
   useEffect(()=>{
     for(let i=1;i<uploadMoviePages;i++){
@@ -21,11 +23,12 @@ const  MovieList:React.FC<MovieListProps>=({dis,movies})=>{
   },[])
   
   const uploadOnMouseScroll=():void => {
-    let fullHeight=document.body.scrollHeight;
-    let currentHeightPosition=window.pageYOffset 
-    let heightOfWindow=document.documentElement.clientHeight
+    // если пользыватель доходит до конца страницы увеличиваю значение страницы и диспатчу 
+    let fullHeight:number=document.body.scrollHeight;
+    let currentHeightPosition:number=window.pageYOffset 
+    let heightOfWindow:number=document.documentElement.clientHeight
     if(fullHeight-300<currentHeightPosition+heightOfWindow){
-     handleUploadOnScroll()
+        handleUploadOnScroll()
     }
   };
 
@@ -33,18 +36,23 @@ const  MovieList:React.FC<MovieListProps>=({dis,movies})=>{
   useEffect(() => {
     window.addEventListener("scroll", uploadOnMouseScroll);
     return () => {
-      window.removeEventListener("scroll", uploadOnMouseScroll);
+        window.removeEventListener("scroll", uploadOnMouseScroll);
     };
   });
 
-  const handleUploadOnScroll=()=>{
+  const handleUploadOnScroll=():void=>{
     setUploadMoviePages(uploadMoviePages+1)
     dis({type:"REQUEST_MOVIES",page:uploadMoviePages})
   }
 
   return (
           <div style={{display:'flex',flexWrap:'wrap'}}>
-            {movies.map(e=><MoviePoster  poster_path={e.poster_path} ></MoviePoster>)}
+                {moviesList.map(e=><MoviePoster 
+                vote_average={e.vote_average}  
+                title={e.title}
+                id={e.id} 
+                poster_path={e.poster_path} 
+                ></MoviePoster>)}
           </div>
      );
 }
