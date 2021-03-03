@@ -5,11 +5,15 @@ export interface IMovieEssantial{
     vote_average:number;
     title:string;
     poster_path:string;
-    id:number
+    id:number;
+    ratedByUser:boolean;
+    howMuch:number
 }   
 type acion={
     type:string,
-    payload:IMovieEssantial[]
+    payload:IMovieEssantial[];
+    id:number;
+    howMuch:number
 }
 
 export const scrollFetchingReducer=(state:IMovieEssantial[]=[],action:acion):IMovieEssantial[]=>{
@@ -25,8 +29,16 @@ export const scrollFetchingReducer=(state:IMovieEssantial[]=[],action:acion):IMo
             console.log('fail')
             return state
         case "RATE_MOVIE":
-            
-            return state
+            let ratingModifyArray:IMovieEssantial[]=[]
+            state.map(item=>{
+               if(item.id===action.id){
+                    ratingModifyArray.push({...item,howMuch:action.howMuch,ratedByUser:true})
+                }else{
+                    ratingModifyArray.push({...item})
+                    }
+                 })
+                
+            return ratingModifyArray
         default:
             return state
     }

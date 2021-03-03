@@ -5,10 +5,11 @@ import MoviePoster from "./MoviePoster";
 import {MoviePosterData } from "./MoviePoster";
 import {useSelector,useDispatch} from "react-redux";
 import {reduerObjectTYpe} from "../Redux/reducer/RootReducer";
+import { IMovieEssantial } from '../Redux/reducer/scrollFetchingReducer';
 
 const  MovieList:React.FC=()=>{
 
-  let moviesList=useSelector<reduerObjectTYpe,MoviePosterData[]>(e=>{return e.scrollFetchingReducer!});
+  let moviesList=useSelector<reduerObjectTYpe,IMovieEssantial[]>(e=>{return e.scrollFetchingReducer});
   console.log(moviesList)
    //получаю список фильмов из саги 
   let [uploadMoviePages,setUploadMoviePages]=useState<number>(3)
@@ -49,10 +50,12 @@ const  MovieList:React.FC=()=>{
   return (
           <div style={{display:'flex',flexWrap:'wrap'}}>
                 {moviesList.map(e=><MoviePoster 
+                howMuch={e.howMuch}
                 vote_average={e.vote_average}  
                 title={e.title}
                 id={e.id} 
                 poster_path={e.poster_path} 
+                ratedByUser={e.ratedByUser}
                 ></MoviePoster>)}
           </div>
      );
