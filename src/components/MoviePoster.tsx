@@ -24,7 +24,8 @@ const MoviePoster:React.FC<MoviePosterData>=({poster_path,vote_average,title,id}
             />
             <h3>{title}</h3>
             <Stars
-                id={id}
+              numberOfStars={vote_average}
+              id={id}
               setUserVouted={MarkAsVouted}    
             ></Stars>
         </div>

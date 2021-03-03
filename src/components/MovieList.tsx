@@ -4,10 +4,11 @@ import Stars from "./Stars";
 import MoviePoster from "./MoviePoster";
 import {MoviePosterData } from "./MoviePoster";
 import {useSelector,useDispatch} from "react-redux";
+import {reduerObjectTYpe} from "../Redux/reducer/RootReducer";
 
 const  MovieList:React.FC=()=>{
 
-  let moviesList=useSelector<[],MoviePosterData[]>(e=>{return e});
+  let moviesList=useSelector<reduerObjectTYpe,MoviePosterData[]>(e=>{return e.scrollFetchingReducer!});
   console.log(moviesList)
    //получаю список фильмов из саги 
   let [uploadMoviePages,setUploadMoviePages]=useState<number>(3)

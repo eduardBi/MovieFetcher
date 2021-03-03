@@ -4,10 +4,10 @@ import {starsByUser  } from "./MoviePoster";
 interface StarInterface{
     setUserVouted:(id:number,value:number)=>void;
     id:number;
+    numberOfStars:number
 }
 
-const Stars:React.FC<StarInterface>=({setUserVouted,id})=>{
-    let numberOfStars=5;
+const Stars:React.FC<StarInterface>=({setUserVouted,id,numberOfStars})=>{
     let byUser=true
     let [arrayOfStars,setArrayOfStars]=useState<React.ReactNode[]>([])
     

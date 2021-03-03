@@ -14,7 +14,10 @@ export function*  FetchMovieList(action){
     //отправка запроса 
     try {
         const data = yield call((page)=>SagaFetchAsyncMovie('dba73a007a1296ead2116cc50b2c5033',action.page));
-        yield put({type: "SUCCESS_MOVIES", payload: data.results});
+        let arrayWithRating=[]
+        data.results.map(item=>{arrayWithRating.push({...item,ratedByUser:false,howManytStars:0})})
+        console.log(arrayWithRating)
+        yield put({type: "SUCCESS_MOVIES", payload: arrayWithRating});
      } catch (e) {
         yield put({type: "FAIL_MOVIES", message: e.message});
      }
