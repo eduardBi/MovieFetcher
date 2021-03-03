@@ -36,8 +36,7 @@ export const scrollFetchingReducer=(state:IMovieEssantial[]=[],action:acion):IMo
                 }else{
                     ratingModifyArray.push({...item})
                     }
-                 })
-                
+                })
             return ratingModifyArray
         default:
             return state

@@ -14,7 +14,10 @@ export interface MoviePosterData{
 
 export type starsByUser={userVoted:boolean,howMuch:number}
 
-const MoviePoster:React.FC<MoviePosterData>=({poster_path,vote_average,title,id,ratedByUser,howMuch}) => {
+const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
+    let {poster_path,title,vote_average,id,ratedByUser,howMuch}=data
+
+    
 
     let dis=useDispatch()
 
@@ -40,6 +43,9 @@ const MoviePoster:React.FC<MoviePosterData>=({poster_path,vote_average,title,id,
         </span>)
     }
     
+    const addToWishList=(data:MoviePosterData)=>{
+        dis({type:'ADD_TO_WISHLIST', payload:data})
+    }
 
 
     return (
@@ -51,6 +57,7 @@ const MoviePoster:React.FC<MoviePosterData>=({poster_path,vote_average,title,id,
             <Stars
                 starsArray={arrayOFstarsPRerenderd}
             ></Stars>
+            <button onClick={()=>addToWishList(data)}></button>
         </div>
     );
 }
