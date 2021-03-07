@@ -8,9 +8,10 @@ type acion={
 }
 
 export const addToWishListReducer=(state:IMovieEssantial[]=[],action:acion):IMovieEssantial[]=>{
+    
     switch (action.type) {
         case 'ADD_TO_WISHLIST':
-            console.log(state)
+    
             if(state.filter(i=>i.id === action.payload.id).length == 0){
                  return [...state,action.payload];
             }

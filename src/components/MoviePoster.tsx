@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Stars from "./Stars";
+import {Link  } from "react-router-dom";
 
 
 export interface MoviePosterData{
@@ -44,6 +45,7 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
     }
     
     const addToWishList=(data:MoviePosterData)=>{
+        console.log(data)
         dis({type:'ADD_TO_WISHLIST', payload:data})
     }
 
@@ -53,11 +55,11 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             <img 
                 src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt=""
             />
-            <h3>{title}</h3>
+            <h3><Link to={`/Movies/${id}`} >{title}</Link></h3>
             <Stars
                 starsArray={arrayOFstarsPRerenderd}
             ></Stars>
-            <button onClick={()=>addToWishList(data)}></button>
+            <button onClick={()=>addToWishList(data)}>add to wishList</button>
         </div>
     );
 }
