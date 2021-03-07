@@ -8,8 +8,8 @@ const App = () => {
   return (
     <>
     <BrowserRouter>
-    <Link to="wishlist">wishlist</Link>
-    <Link to="/Movies/587807">one</Link>
+    <Link to="/wishlist">wishlist</Link>
+    <Link to="/">main</Link>
         <Switch>
           <Route path="/" exact  component={MovieList}/>
           <Route path="/wishlist" exact component={WishList}/>

@@ -50,12 +50,7 @@ const  MovieList:React.FC=()=>{
   return (
           <div style={{display:'flex',flexWrap:'wrap'}}>
                 {moviesList.map(e=><MoviePoster 
-                howMuch={e.howMuch}
-                vote_average={e.vote_average}  
-                title={e.title}
-                id={e.id} 
-                poster_path={e.poster_path} 
-                ratedByUser={e.ratedByUser}
+               {...e}
                 ></MoviePoster>)}
           </div>
      );

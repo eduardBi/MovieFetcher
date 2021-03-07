@@ -9,7 +9,7 @@ const WishList = () => {
     
     return (
         <div> 
-            {WishList.map(e=><MoviePoster {...e}></MoviePoster>)}
+            { WishList.map(e=><MoviePoster {...e}></MoviePoster>)}
         </div>
     );
 }

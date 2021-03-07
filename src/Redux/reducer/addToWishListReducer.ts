@@ -1,5 +1,4 @@
 import { Action } from "redux";
-import { createNoSubstitutionTemplateLiteral } from "typescript";
 import { IMovieEssantial } from "./scrollFetchingReducer";
 
 type acion={
