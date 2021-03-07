@@ -1,18 +1,40 @@
 
 @import '_reuse.scss';
 
+.background-image{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    width: 100vw;
+    height: 100vh;
+}
+
 .movie-list-wrapper{
+    padding: 4rem 0;
     display: grid;
     grid-template-columns: 1fr  1fr 1fr;
     grid-gap: 5vh;
     justify-items: center;
+    align-items: flex-end;
     .movie-list-item{
+        position: relative;
+        width: 70%;
+        padding: 2rem ;
+        border-radius: 1.5rem;
+        border-bottom-right-radius: 0;
+        box-shadow: $secondary-color  0.5rem 0.5rem ;
+        background: $main-background-color;
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: all 0.2s smooth;
+        &:hover{
+            background: $secondary-background-color;
+        }
         .movie-list-link{
             margin-top: 2rem;
-            width: 70%;
+            width: 100%;
             font-size: 24px;
             text-align: center;
             text-decoration: none;
@@ -24,14 +46,19 @@
             @include ListHandler;
             margin: 2rem 0;
             cursor: pointer;
+            padding-bottom: 2rem;
         }
         .movie-list-button{
             background: blue;
-            border-radius: 1rem;
+            border-top-left-radius: 1rem;
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
             padding: 1rem 2rem;
+            outline: none;
+            position: absolute;
+            bottom: 0;
+            right: 0;
             &:hover{
                 background: yellow;
             }

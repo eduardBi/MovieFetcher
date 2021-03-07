@@ -2,7 +2,7 @@
 
 
 .nav-wrapper{
-    background: blue;
+    background: $main-background-color;
     width: 100%;
     .nav-list{
         @include ListHandler;
@@ -10,7 +10,7 @@
         align-items: center;
         justify-content: space-around;
         .nav-list-link{
-            @include LinkHandler(50px)
+            @include LinkHandler(50px,yellow)
         }
     }
 }

@@ -14,7 +14,9 @@ const SingleMovie = () => {
     //ищу текущий фильм по айди из поисковой строки 
     let showingMovie:IMovieEssantial=MovieITem[0];
     return (
+        <div className="movie-list-wrapper" style={{display:'block',width:'33%',margin:'0 auto'}}>
             <MoviePoster {...showingMovie}></MoviePoster>
+            </div>
     );
 }
 

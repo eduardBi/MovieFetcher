@@ -8,7 +8,7 @@ const WishList = () => {
     let WishList=useSelector<reduerObjectTYpe,IMovieEssantial[]>(e=>e.addToWishListReducer);
     
     return (
-        <div> 
+        <div className="movie-list-wrapper"> 
             { WishList.map(e=><MoviePoster {...e}></MoviePoster>)}
         </div>
     );

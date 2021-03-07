@@ -28,7 +28,7 @@ const  MovieList:React.FC=()=>{
     let fullHeight:number=document.body.scrollHeight;
     let currentHeightPosition:number=window.pageYOffset 
     let heightOfWindow:number=document.documentElement.clientHeight
-    if(fullHeight-300<currentHeightPosition+heightOfWindow){
+    if(fullHeight-500<currentHeightPosition+heightOfWindow){
         handleUploadOnScroll()
     }
   };

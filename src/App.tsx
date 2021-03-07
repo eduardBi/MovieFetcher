@@ -16,6 +16,7 @@ const App = () => {
           <Route path="/Movies/:name" exact component={SingleMovie}/>
         </Switch>
     </BrowserRouter>
+    <img className="background-image" src={require('./background.png').default} alt=""/>
     </>
   );
 }
