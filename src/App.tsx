@@ -2,19 +2,19 @@ import React from 'react';
 import MovieList from "./components/MovieList";
 import WishList from "./components/WishList";
 import SingleMovie from "./components/SingleMovie";
+import Nav from "./components/NavigationBar";
 import { BrowserRouter ,Route, Switch ,Link} from "react-router-dom";
-
+import "./scss/main.scss";
 const App = () => {
   return (
     <>
     <BrowserRouter>
-    <Link to="/wishlist">wishlist</Link>
-    <Link to="/">main</Link>
+      <Nav></Nav>
         <Switch>
           <Route path="/" exact  component={MovieList}/>
           <Route path="/wishlist" exact component={WishList}/>
           <Route path="/Movies/:name" exact component={SingleMovie}/>
-          </Switch>
+        </Switch>
     </BrowserRouter>
     </>
   );

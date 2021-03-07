@@ -36,6 +36,7 @@ export const scrollFetchingReducer=(state:IMovieEssantial[]=[],action:acion):IMo
                 }else{
                     ratingModifyArray.push({...item})
                     }
+                    //добавляю поля проголосовал ли пользыватель
                 })
             return ratingModifyArray
         default:

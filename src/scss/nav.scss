@@ -1,0 +1,16 @@
+@import '_reuse.scss';
+
+
+.nav-wrapper{
+    background: blue;
+    width: 100%;
+    .nav-list{
+        @include ListHandler;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .nav-list-link{
+            @include LinkHandler(50px)
+        }
+    }
+}

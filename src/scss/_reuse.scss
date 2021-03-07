@@ -1,0 +1,10 @@
+@mixin LinkHandler($fontsize,$textdecration:none,$text-align:center){
+    font-size: $fontsize;
+    text-align: $text-align;
+    text-decoration: $textdecration;
+}
+@mixin ListHandler($list-style:none){
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+}

@@ -11,6 +11,7 @@ const SingleMovie = () => {
     console.log(currentMovieId)
     let Movies =useSelector<reduerObjectTYpe,IMovieEssantial[]>(e=>e.scrollFetchingReducer)
     let MovieITem:IMovieEssantial[]=Movies.filter(e=>e.id===currentMovieId);
+    //ищу текущий фильм по айди из поисковой строки 
     let showingMovie:IMovieEssantial=MovieITem[0];
     return (
             <MoviePoster {...showingMovie}></MoviePoster>

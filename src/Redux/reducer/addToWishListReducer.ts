@@ -12,6 +12,7 @@ export const addToWishListReducer=(state:IMovieEssantial[]=[],action:acion):IMov
         case 'ADD_TO_WISHLIST':
     
             if(state.filter(i=>i.id === action.payload.id).length == 0){
+                //проверяю нет ли данного фильма б чтобы не создавать копию 
                  return [...state,action.payload];
             }
             return state

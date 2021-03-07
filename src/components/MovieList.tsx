@@ -10,7 +10,6 @@ import { IMovieEssantial } from '../Redux/reducer/scrollFetchingReducer';
 const  MovieList:React.FC=()=>{
 
   let moviesList=useSelector<reduerObjectTYpe,IMovieEssantial[]>(e=>{return e.scrollFetchingReducer});
-  console.log(moviesList)
    //получаю список фильмов из саги 
   let [uploadMoviePages,setUploadMoviePages]=useState<number>(3)
     //количество загружаемых страниц 
@@ -48,9 +47,10 @@ const  MovieList:React.FC=()=>{
   }
 
   return (
-          <div style={{display:'flex',flexWrap:'wrap'}}>
+          <div className="movie-list-wrapper">
                 {moviesList.map(e=><MoviePoster 
-               {...e}
+                  key={e.id}
+                  {...e}
                 ></MoviePoster>)}
           </div>
      );
