@@ -5,15 +5,8 @@ import {Link  } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faStar  as HollowStar  } from '@fortawesome/free-regular-svg-icons'
 import {  faStar  as SolidStar } from '@fortawesome/free-solid-svg-icons'
+import {MoviePosterData} from "../Redux/reducer/reducersReturnTypes";
 
-export interface MoviePosterData{
-    poster_path:string;
-    title:string;
-    vote_average:number;
-    id:number;
-    ratedByUser:boolean;
-    howMuch:number
-}
 
 export type starsByUser={userVoted:boolean,howMuch:number}
 

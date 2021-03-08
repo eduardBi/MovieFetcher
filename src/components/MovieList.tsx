@@ -1,8 +1,8 @@
 import React, { useState ,useEffect, MouseEvent} from 'react';
 import MoviePoster from "./MoviePoster";
 import {useSelector,useDispatch} from "react-redux";
-import {reduerObjectType} from "../Redux/reducer/RootReducer";
-import {scrollFetchingType} from "../Redux/reducer/scrollFetchingReducer";
+import {reduerObjectType} from "../Redux/reducer/reducersReturnTypes";
+import {scrollFetchingType} from "../Redux/reducer/reducersReturnTypes";
 import  Loader from "./Loader";
 import  Error from "./Error";
 

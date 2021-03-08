@@ -7,11 +7,7 @@ import {addToWishListReducer} from "./addToWishListReducer";
 
 const SagaMiddleware=createSagaMiddleware()
 
-
-
-let rootReducer=combineReducers({scrollFetchingReducer,addToWishListReducer})
-
-export type reduerObjectType=ReturnType <typeof rootReducer>
+export let rootReducer=combineReducers({scrollFetchingReducer,addToWishListReducer})
 
 export const store=createStore(rootReducer,applyMiddleware(SagaMiddleware))
 SagaMiddleware.run(SagaFetchMovies)

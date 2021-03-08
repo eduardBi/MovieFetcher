@@ -2,8 +2,9 @@ import React from 'react';
 import MoviePoster from "./MoviePoster";
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import {reduerObjectType} from "../Redux/reducer/RootReducer";
-import { MoviePosterData } from "./MoviePoster";
+import {reduerObjectType} from "../Redux/reducer/reducersReturnTypes";
+import {MoviePosterData} from "../Redux/reducer/reducersReturnTypes";
+
 
 const SingleMovie = () => {
     const location=useLocation<string>();

@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import {MoviePosterData} from "../../components/MoviePoster";
+import {MoviePosterData} from "./reducersReturnTypes";
 
 type acion={
     type:string,

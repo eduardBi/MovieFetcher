@@ -1,13 +1,8 @@
 import { Action } from "redux";
-import {MoviePosterData} from "../../components/MoviePoster";
+import {MoviePosterData} from "./reducersReturnTypes";
+import {scrollFetchingType} from "./reducersReturnTypes";
 
-export interface scrollFetchingType{
-    data:MoviePosterData[];
-    error:boolean;
-    isloading:boolean;
-}
-
-type acion={
+type action={
     type:string,
     payload:MoviePosterData[];
     id:number;
@@ -19,7 +14,7 @@ const initialState={
     isloading:true,
 }
 
-export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action:acion):scrollFetchingType=>{
+export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action:action):scrollFetchingType=>{
     switch (action.type) {
         case 'REQUEST_MOVIES':
             return { 
