@@ -3,8 +3,10 @@ import MoviePoster from "./MoviePoster";
 import {useSelector,useDispatch} from "react-redux";
 import {reduerObjectType} from "../Redux/reducer/reducersReturnTypes";
 import {scrollFetchingType} from "../Redux/reducer/reducersReturnTypes";
+import {requestMovie} from "../Redux/actions/actions";
 import  Loader from "./Loader";
 import  Error from "./Error";
+
 
 
 
@@ -22,7 +24,7 @@ const  MovieList:React.FC=()=>{
 
   useEffect(()=>{
     for(let i=1;i<uploadMoviePages;i++){
-      dis({type:"REQUEST_MOVIES",page:i})
+      dis(requestMovie(i))
     }
     //добавляю первые 5 страниц с сервера при первой загрузке
   },[])
@@ -35,6 +37,7 @@ const  MovieList:React.FC=()=>{
     if(fullHeight-500<currentHeightPosition+heightOfWindow){
         handleUploadOnScroll()
     }
+    window.scrollTo(0,currentHeightPosition);
   };
 
 
@@ -47,7 +50,8 @@ const  MovieList:React.FC=()=>{
 
   const handleUploadOnScroll=():void=>{
     setUploadMoviePages(uploadMoviePages+1)
-    dis({type:"REQUEST_MOVIES",page:uploadMoviePages})
+    //увеличиваю страницу запроса на 1 и делаю запрос на сервер
+    dis(requestMovie(uploadMoviePages))
   }
 
   return (

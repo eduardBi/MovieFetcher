@@ -8,7 +8,8 @@ export interface MoviePosterData{
     vote_average:number;
     id:number;
     ratedByUser:boolean;
-    howMuch:number
+    howMuch:number;
+    inWishList:boolean;
 }
 
 export interface scrollFetchingType{

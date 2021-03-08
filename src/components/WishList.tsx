@@ -6,11 +6,17 @@ import MoviePoster from "./MoviePoster";
 
 
 const WishList = () => {
-    let WishList=useSelector<reduerObjectType,MoviePosterData[]>(e=>e.addToWishListReducer);
+    let WishList=useSelector<reduerObjectType,MoviePosterData[]>(e=>e.scrollFetchingReducer.data);
     
     return (
         <div className="movie-list-wrapper"> 
-            { WishList.map(e=><MoviePoster {...e}></MoviePoster>)}
+            { WishList.map(e=>{
+                if(e.inWishList){
+                return  <MoviePoster {...e}></MoviePoster>
+            }
+                return ''
+            }
+        )}
         </div>
     );
 }

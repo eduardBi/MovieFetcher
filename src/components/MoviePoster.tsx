@@ -6,18 +6,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faStar  as HollowStar  } from '@fortawesome/free-regular-svg-icons'
 import {  faStar  as SolidStar } from '@fortawesome/free-solid-svg-icons'
 import {MoviePosterData} from "../Redux/reducer/reducersReturnTypes";
-
+import {rateMovieFunction} from "../Redux/actions/actions";
 
 export type starsByUser={userVoted:boolean,howMuch:number}
 
 const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
     let {poster_path,title,vote_average,id,ratedByUser,howMuch}=data
 
+    
+
     let dis=useDispatch()
 
     const MarkAsVouted=(id:number,value:number):void=>{
         //закрашиваю звёзды в желтый
-        dis({type:'RATE_MOVIE',id:id,howMuch:value})
+        dis(rateMovieFunction(id,value))
     }
 
     let arrayOFstarsPRerenderd=[]
@@ -49,7 +51,8 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
     
     const addToWishList=(data:MoviePosterData)=>{
         //добавляю в лист для желаний 
-        dis({type:'ADD_TO_WISHLIST', payload:data})
+            dis({type:'ADD_TO_WISHLIST', payload:data ,id:data.id})
+        
     }
 
 
@@ -67,7 +70,8 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             <Stars
                 starsArray={arrayOFstarsPRerenderd}
             ></Stars>
-            <button className='movie-list-button'
+            <button
+                className='movie-list-button'
                 onClick={()=>addToWishList(data)}
             >add to wishList</button>
         </div>

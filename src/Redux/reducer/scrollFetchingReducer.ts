@@ -1,20 +1,15 @@
 import { Action } from "redux";
 import {MoviePosterData} from "./reducersReturnTypes";
 import {scrollFetchingType} from "./reducersReturnTypes";
+import { fetchDataAction ,rateMovie   } from "../actions/actionTypes";
 
-type action={
-    type:string,
-    payload:MoviePosterData[];
-    id:number;
-    howMuch:number
-}
 const initialState={
     data:[],
     error:false,
     isloading:true,
 }
 
-export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action:action):scrollFetchingType=>{
+export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action:fetchDataAction|rateMovie):scrollFetchingType=>{
     switch (action.type) {
         case 'REQUEST_MOVIES':
             return { 
@@ -22,15 +17,21 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
                 error:false,
                 isloading:true
             };
-            break;
+        break;
+
         case 'SUCCESS_MOVIES':
-            return {data:[...state.data,...action.payload],error:false,isloading:false}
+            let modifiedArray:MoviePosterData[]=[]
+            action.payload.map(item=>{
+                modifiedArray.push({...item,howMuch:0,ratedByUser:false,inWishList:false})
+                    //добавляю поля проголосовал ли пользыватель
+            })
+            return {data:[...state.data,...modifiedArray],error:false,isloading:false}
             //добавляю в уже существующий массив данные из сервера  
-            break;
+        break;
 
         case "FAIL_MOVIES":
             return {data:[...state.data,...action.payload],error:true,isloading:false}
-            break;
+        break;
 
         case "RATE_MOVIE":
             let ratingModifyArray:MoviePosterData[]=[]
@@ -42,9 +43,18 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
                     }
                     //добавляю поля проголосовал ли пользыватель
                 })
-            return {...state,data:ratingModifyArray}
+                return {...state,data:ratingModifyArray}
             break;
+            
+            case 'ADD_TO_WISHLIST':
+                if(state.data.filter(i=>i.id === action.id).length == 0){
+                    //проверяю нет ли данного фильма б чтобы не создавать копию 
+                     return {...state,data:[...action.payload]};
+                }
+                
 
+                return state
+            break;           
         default:
             return state
     }
