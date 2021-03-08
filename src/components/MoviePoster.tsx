@@ -49,13 +49,11 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
         </span>)
     }
     
-    const addToWishList=(data:MoviePosterData)=>{
+    const addToWishList=(id:number)=>{
         //добавляю в лист для желаний 
-            dis({type:'ADD_TO_WISHLIST', payload:data ,id:data.id})
+            dis({type:'ADD_TO_WISHLIST' ,id:id})
         
     }
-
-
     return (
         <div className="movie-list-item">
             <img 
@@ -72,7 +70,7 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             ></Stars>
             <button
                 className='movie-list-button'
-                onClick={()=>addToWishList(data)}
+                onClick={()=>addToWishList(id)}
             >add to wishList</button>
         </div>
     );

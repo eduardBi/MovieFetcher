@@ -47,13 +47,16 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
             break;
             
             case 'ADD_TO_WISHLIST':
-                if(state.data.filter(i=>i.id === action.id).length == 0){
-                    //проверяю нет ли данного фильма б чтобы не создавать копию 
-                     return {...state,data:[...action.payload]};
-                }
-                
-
-                return state
+                let inWishListArray:MoviePosterData[]=[];
+                state.data.map(item=>{
+                    if(item.id===action.id){
+                        inWishListArray.push({...item,inWishList:true})
+                     }else{
+                        inWishListArray.push({...item})
+                    }
+                         //добавляю поле в листе для желаний 
+                     })
+                return {...state,data:inWishListArray}
             break;           
         default:
             return state
