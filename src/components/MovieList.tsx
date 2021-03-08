@@ -3,6 +3,10 @@ import MoviePoster from "./MoviePoster";
 import {useSelector,useDispatch} from "react-redux";
 import {reduerObjectType} from "../Redux/reducer/RootReducer";
 import {scrollFetchingType} from "../Redux/reducer/scrollFetchingReducer";
+import  Loader from "./Loader";
+import  Error from "./Error";
+
+
 
 
 const  MovieList:React.FC=()=>{
@@ -48,14 +52,12 @@ const  MovieList:React.FC=()=>{
 
   return (
           <div className="movie-list-wrapper">
-            {moviesList.isloading? 'loading':'leaded'}
-            <br/>
-            {moviesList.error? 'eror':'is not error'}
+            {moviesList.isloading? <Loader></Loader>:''}
+            {moviesList.error? <Error></Error>:''}
                 {moviesList.data.map(e=><MoviePoster 
                   key={e.id}
                   {...e}
                 ></MoviePoster>)}
-                
           </div>
      );
 }
