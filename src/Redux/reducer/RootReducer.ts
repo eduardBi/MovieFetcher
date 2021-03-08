@@ -10,7 +10,8 @@ const SagaMiddleware=createSagaMiddleware()
 
 
 let rootReducer=combineReducers({scrollFetchingReducer,addToWishListReducer})
-export type reduerObjectTYpe=ReturnType <typeof rootReducer>
+
+export type reduerObjectType=ReturnType <typeof rootReducer>
 
 export const store=createStore(rootReducer,applyMiddleware(SagaMiddleware))
 SagaMiddleware.run(SagaFetchMovies)

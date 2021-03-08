@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { IMovieEssantial } from '../Redux/reducer/scrollFetchingReducer';
-import {reduerObjectTYpe} from "../Redux/reducer/RootReducer";
+import {reduerObjectType} from "../Redux/reducer/RootReducer";
 import MoviePoster from "./MoviePoster";
+import {MoviePosterData} from "./MoviePoster";
 
 const WishList = () => {
-    let WishList=useSelector<reduerObjectTYpe,IMovieEssantial[]>(e=>e.addToWishListReducer);
+    let WishList=useSelector<reduerObjectType,MoviePosterData[]>(e=>e.addToWishListReducer);
     
     return (
         <div className="movie-list-wrapper"> 

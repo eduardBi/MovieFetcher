@@ -1,12 +1,12 @@
 import { Action } from "redux";
-import { IMovieEssantial } from "./scrollFetchingReducer";
+import {MoviePosterData} from "../../components/MoviePoster";
 
 type acion={
     type:string,
-    payload:IMovieEssantial
+    payload:MoviePosterData
 }
 
-export const addToWishListReducer=(state:IMovieEssantial[]=[],action:acion):IMovieEssantial[]=>{
+export const addToWishListReducer=(state:MoviePosterData[]=[],action:acion):MoviePosterData[]=>{
     
     switch (action.type) {
         case 'ADD_TO_WISHLIST':

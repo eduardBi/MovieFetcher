@@ -1,19 +1,19 @@
 import React, { useState ,useEffect, MouseEvent} from 'react';
-import { Dispatch } from "redux";
-import Stars from "./Stars";
 import MoviePoster from "./MoviePoster";
-import {MoviePosterData } from "./MoviePoster";
 import {useSelector,useDispatch} from "react-redux";
-import {reduerObjectTYpe} from "../Redux/reducer/RootReducer";
-import { IMovieEssantial } from '../Redux/reducer/scrollFetchingReducer';
+import {reduerObjectType} from "../Redux/reducer/RootReducer";
+import {scrollFetchingType} from "../Redux/reducer/scrollFetchingReducer";
+
 
 const  MovieList:React.FC=()=>{
 
-  let moviesList=useSelector<reduerObjectTYpe,IMovieEssantial[]>(e=>{return e.scrollFetchingReducer});
+  let moviesList=useSelector<reduerObjectType,scrollFetchingType>(e=>{
+        return e.scrollFetchingReducer}
+    );
    //получаю список фильмов из саги 
   let [uploadMoviePages,setUploadMoviePages]=useState<number>(3)
     //количество загружаемых страниц 
-
+    
   let dis=useDispatch()  
 
   useEffect(()=>{
@@ -48,10 +48,14 @@ const  MovieList:React.FC=()=>{
 
   return (
           <div className="movie-list-wrapper">
-                {moviesList.map(e=><MoviePoster 
+            {moviesList.isloading? 'loading':'leaded'}
+            <br/>
+            {moviesList.error? 'eror':'is not error'}
+                {moviesList.data.map(e=><MoviePoster 
                   key={e.id}
                   {...e}
                 ></MoviePoster>)}
+                
           </div>
      );
 }

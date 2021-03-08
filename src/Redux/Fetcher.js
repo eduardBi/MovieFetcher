@@ -17,7 +17,7 @@ export function*  FetchMovieList(action){
         //добавляю в массив поля "поставил ли оценку пользыватель"
         yield put({type: "SUCCESS_MOVIES", payload: arrayWithRating});
      } catch (e) {
-        yield put({type: "FAIL_MOVIES", message: e.message});
+        yield put({type: "FAIL_MOVIES", payload:[]});
      }
      
 }
