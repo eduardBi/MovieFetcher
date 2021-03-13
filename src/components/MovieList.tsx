@@ -23,9 +23,13 @@ const  MovieList:React.FC=()=>{
   let dis=useDispatch()  
 
   useEffect(()=>{
-    for(let i=1;i<uploadMoviePages;i++){
-      dis(requestMovie(i))
-    }
+
+      if(moviesList.data.length===0){
+        //
+        for(let i=1;i<uploadMoviePages;i++){
+          dis(requestMovie(i))
+        }
+      }
     //добавляю первые 5 страниц с сервера при первой загрузке
   },[])
   

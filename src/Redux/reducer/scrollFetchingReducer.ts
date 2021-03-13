@@ -13,7 +13,7 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
     switch (action.type) {
         case 'REQUEST_MOVIES':
             return { 
-                data:[],
+                data:[...state.data],
                 error:false,
                 isloading:true
             };
@@ -25,7 +25,8 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
                 modifiedArray.push({...item,howMuch:0,ratedByUser:false,inWishList:false})
                     //добавляю поля проголосовал ли пользыватель
             })
-            return {data:[...state.data,...modifiedArray],error:false,isloading:false}
+            console.log(modifiedArray)
+            return {data:[...state.data].concat(modifiedArray),error:false,isloading:false}
             //добавляю в уже существующий массив данные из сервера  
         break;
 
@@ -56,8 +57,21 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
                     }
                          //добавляю поле в листе для желаний 
                      })
+                     console.log(inWishListArray)
                 return {...state,data:inWishListArray}
-            break;           
+            break;     
+            case 'REMOVE_FROM_WISHLIST':
+                let removeFromWishList:MoviePosterData[]=[];
+                state.data.map(item=>{
+                    if(item.id===action.id){
+                        removeFromWishList.push({...item,inWishList:!item.inWishList})
+                     }else{
+                        removeFromWishList.push({...item})
+                    }
+                         //добавляю поле в листе для желаний 
+                })  
+                return {...state,data:removeFromWishList}
+                break;
         default:
             return state
     }

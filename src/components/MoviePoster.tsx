@@ -11,7 +11,7 @@ import {rateMovieFunction} from "../Redux/actions/actions";
 export type starsByUser={userVoted:boolean,howMuch:number}
 
 const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
-    let {poster_path,title,vote_average,id,ratedByUser,howMuch}=data
+    let {poster_path,inWishList,title,vote_average,id,ratedByUser,howMuch}=data
 
     
 
@@ -53,6 +53,11 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
         //добавляю в лист для желаний 
             dis({type:'ADD_TO_WISHLIST' ,id:id})
         
+    } 
+    const removeFromWishList=(id:number)=>{
+        //удаляю  из  лист для желаний 
+            dis({type:'REMOVE_FROM_WISHLIST' ,id:id})
+        
     }
     return (
         <div className="movie-list-item">
@@ -68,10 +73,15 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             <Stars
                 starsArray={arrayOFstarsPRerenderd}
             ></Stars>
+            {!inWishList ?
             <button
                 className='movie-list-button'
                 onClick={()=>addToWishList(id)}
-            >add to wishList</button>
+            >add to wishList</button>:<button
+                className='movie-list-button'
+                onClick={()=>removeFromWishList(id)}
+            >remove to wishList</button>
+            }
         </div>
     );
 }
