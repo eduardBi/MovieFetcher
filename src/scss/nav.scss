@@ -1,16 +1,41 @@
 @import '_reuse.scss';
 
 
+
 .nav-wrapper{
     background: $main-background-color;
     width: 100%;
     .nav-list{
         @include ListHandler;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
+        text-align: center;
+        
+        .nav-list-item{
+            flex-basis:300px;
+            margin: 1rem 0;
+            width: 100%;
+            color: blue;
+            border-radius: 1rem;
+        }
         .nav-list-link{
-            @include LinkHandler(50px,yellow)
+            width: 100%;
+            display: flex;
+            border-radius: 2rem;
+            @include LinkHandler(50px,#eecc5c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .logo{
+            width: 30%;
+            height: 40%;
+            border-radius: 50%;
+            
         }
     }
 }

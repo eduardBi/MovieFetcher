@@ -31,7 +31,7 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             key={i}
             onClick={()=>MarkAsVouted(id,i)}
             style={
-                {color: ratedByUser && howMuch+1>i? 'yellow':"black"}
+                {color: ratedByUser && howMuch+1>i? '#eecc5c':"black"}
                 //закрашиваю в желтый цвет если пользыватель проголосова
         }//вывожу закрашенную звезду для различия между "проголосовал пользыватель (цвет) и среднее число голосов (полная или пустая звезда)"
         >
@@ -41,7 +41,7 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             key={i}
             onClick={()=>MarkAsVouted(id,i)}
             style={
-                {color: ratedByUser && howMuch+1>i ?'yellow':"black"}
+                {color: ratedByUser && howMuch+1>i ?'#eecc5c':"black"}
             }//вывожу пустую звезду 
             >
                 <FontAwesomeIcon icon={HollowStar}></FontAwesomeIcon>
@@ -75,9 +75,11 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             ></Stars>
             {!inWishList ?
             <button
+                style={{background:'#1e90ff'}}
                 className='movie-list-button'
                 onClick={()=>addToWishList(id)}
             >add to wishList</button>:<button
+                style={{background:'#ff1493'}}
                 className='movie-list-button'
                 onClick={()=>removeFromWishList(id)}
             >remove to wishList</button>

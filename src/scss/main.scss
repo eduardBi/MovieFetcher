@@ -1,5 +1,12 @@
 @import '_reuse.scss';
 
+a{
+    color: $text-color;
+}
+a:visited{
+    color:$text-color;
+}
+
 .background-image{
     position: fixed;
     top: 0;
@@ -15,7 +22,7 @@
     grid-template-columns: 1fr  1fr 1fr;
     grid-gap: 5vh;
     justify-items: center;
-    align-items: flex-end;
+    align-items: stretch;
     .movie-list-item{
         position: relative;
         width: 70%;
@@ -26,10 +33,11 @@
         background: $main-background-color;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        transition: all 0.2s smooth;
+        align-items:center;
+        transition: all 0.3s smooth;
         &:hover{
             background: $secondary-background-color;
+            transform: scale(1.05);
         }
         .movie-list-link{
             margin-top: 2rem;
@@ -38,7 +46,7 @@
             text-align: center;
             text-decoration: none;
             &:visited{
-                color: black;
+                color:$text-color
             }
         }
         ul{
