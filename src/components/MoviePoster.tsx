@@ -30,19 +30,17 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
         <span  
             key={i}
             onClick={()=>MarkAsVouted(id,i)}
-            style={
-                {color: ratedByUser && howMuch+1>i? '#eecc5c':"black"}
+            className={ratedByUser && howMuch+1>i? 'dark-blue-start':'purple-star' }
                 //закрашиваю в желтый цвет если пользыватель проголосова
-        }//вывожу закрашенную звезду для различия между "проголосовал пользыватель (цвет) и среднее число голосов (полная или пустая звезда)"
+                //вывожу закрашенную звезду для различия между "проголосовал пользыватель (цвет) и среднее число голосов (полная или пустая звезда)"
         >
             <FontAwesomeIcon icon={SolidStar} />
             
         </span>:<span  
             key={i}
             onClick={()=>MarkAsVouted(id,i)}
-            style={
-                {color: ratedByUser && howMuch+1>i ?'#eecc5c':"black"}
-            }//вывожу пустую звезду 
+            className={ratedByUser && howMuch+1>i? 'dark-blue-start':'purple-star' }
+            //вывожу пустую звезду 
             >
                 <FontAwesomeIcon icon={HollowStar}></FontAwesomeIcon>
                 
@@ -75,12 +73,10 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
             ></Stars>
             {!inWishList ?
             <button
-                style={{background:'#1e90ff'}}
-                className='movie-list-button'
+                className={`movie-list-button in-wish-list`}
                 onClick={()=>addToWishList(id)}
             >add to wishList</button>:<button
-                style={{background:'#ff1493'}}
-                className='movie-list-button'
+                className='movie-list-button non-wish-list'
                 onClick={()=>removeFromWishList(id)}
             >remove to wishList</button>
             }

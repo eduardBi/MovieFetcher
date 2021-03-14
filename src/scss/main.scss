@@ -35,6 +35,12 @@ a:visited{
         flex-direction: column;
         align-items:center;
         transition: all 0.3s smooth;
+        .dark-blue-start{
+            color:$main-pink ;
+        }
+        .purple-star{
+            color: $dark-blue;
+        }
         &:hover{
             background: $secondary-background-color;
             transform: scale(1.05);
@@ -56,7 +62,14 @@ a:visited{
             padding-bottom: 2rem;
         }
         .movie-list-button{
-            background: blue;
+            &.non-wish-list{
+                background:#ff1493;
+                color:#eecc5c;
+            }
+            &.in-wish-list{
+                background:#1e90ff;
+                color:#eecc5c
+            }
             border-top-left-radius: 1rem;
             border: none;
             font-size: 1.5rem;
@@ -66,9 +79,6 @@ a:visited{
             position: absolute;
             bottom: 0;
             right: 0;
-            &:hover{
-                background: yellow;
-            }
         }
     }
 }

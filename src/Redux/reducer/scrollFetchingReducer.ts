@@ -25,7 +25,6 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
                 modifiedArray.push({...item,howMuch:0,ratedByUser:false,inWishList:false})
                     //добавляю поля проголосовал ли пользыватель
             })
-            console.log(modifiedArray)
             return {data:[...state.data].concat(modifiedArray),error:false,isloading:false}
             //добавляю в уже существующий массив данные из сервера  
         break;
@@ -57,7 +56,6 @@ export const scrollFetchingReducer=(state:scrollFetchingType=initialState,action
                     }
                          //добавляю поле в листе для желаний 
                      })
-                     console.log(inWishListArray)
                 return {...state,data:inWishListArray}
             break;     
             case 'REMOVE_FROM_WISHLIST':
