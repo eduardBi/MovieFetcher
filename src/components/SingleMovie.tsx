@@ -15,7 +15,7 @@ const SingleMovie = () => {
     //ищу текущий фильм по айди из поисковой строки 
     let showingMovie:MoviePosterData=MovieITem[0];
     return (
-        <div className="movie-list-wrapper" style={{display:'block',width:'33%',margin:'0 auto'}}>
+        <div className="movie-list-wrapper" style={{display:'flex',justifyContent:'center',margin:'0 15vw'}}>
             <MoviePoster {...showingMovie}></MoviePoster>
             </div>
     );

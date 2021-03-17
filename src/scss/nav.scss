@@ -23,7 +23,7 @@
             width: 100%;
             display: flex;
             border-radius: 2rem;
-            @include LinkHandler(50px, $secondary-color );
+            @include LinkHandler(2.5rem, $secondary-color );
             display: flex;
             align-items: center;
             justify-content: center;
@@ -38,3 +38,55 @@
         }
     }
 }
+
+@media  only screen  and (max-width:1200px){
+    .nav-wrapper{
+        .nav-list{
+            .logo{
+                width: 40%;
+                height: 40%;
+            }
+            .nav-list-item{
+                flex-basis:200px;
+                
+            }
+    }
+}
+}
+
+@media  only screen  and (max-width:768px){
+    .nav-wrapper{
+        .nav-list{
+            .logo{
+                width: 50%;
+                height: 50%;
+            }
+            .nav-list-item{
+                flex-basis:100px;
+                font-size: 1.5rem;
+                .nav-list-link{
+                    font-size: 1.5rem;
+                }
+            }
+    }
+}
+}
+
+
+@media  only screen  and (max-width:500px){
+    .nav-wrapper{
+        .nav-list{
+            .logo{
+                width: 20%;
+                height: 20%;
+            }
+            .nav-list-item{
+                flex-basis:70%;
+                
+
+                
+            }
+    }
+}
+}
+

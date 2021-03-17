@@ -101,6 +101,10 @@ a:visited{
             grid-template-columns: 1fr 1fr ;
             .movie-list-item{
                 width: 65%;
+                .movie-list-button{
+                    font-size: 1rem;
+                    width: 90%;
+                }
             }
     }
 }
