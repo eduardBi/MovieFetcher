@@ -7,6 +7,7 @@ import {  faStar  as HollowStar  } from '@fortawesome/free-regular-svg-icons'
 import {  faStar  as SolidStar } from '@fortawesome/free-solid-svg-icons'
 import {MoviePosterData} from "../Redux/reducer/reducersReturnTypes";
 import {rateMovieFunction} from "../Redux/actions/actions";
+import {AddToWishList, DeleteFromWishList} from "../Redux/actions/actions";
 
 export type starsByUser={userVoted:boolean,howMuch:number}
 
@@ -49,12 +50,12 @@ const MoviePoster:React.FC<MoviePosterData>=(data:MoviePosterData) => {
     
     const addToWishList=(id:number)=>{
         //добавляю в лист для желаний 
-            dis({type:'ADD_TO_WISHLIST' ,id:id})
+            dis(AddToWishList(id))
         
     } 
     const removeFromWishList=(id:number)=>{
         //удаляю  из  лист для желаний 
-            dis({type:'REMOVE_FROM_WISHLIST' ,id:id})
+            dis(DeleteFromWishList(id))
         
     }
     return (

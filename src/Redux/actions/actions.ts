@@ -1,4 +1,4 @@
-import {fetchDataAction ,rateMovie  } from "./actionTypes";
+import {fetchDataAction ,rateMovie,WISH_LIST_TYPE_ACTION} from "./actionTypes";
 
 export  function rateMovieFunction(id:number,howMuch:number):rateMovie{
     return{
@@ -8,7 +8,18 @@ export  function rateMovieFunction(id:number,howMuch:number):rateMovie{
     }
 }
 
-
+export  function AddToWishList(id:number):WISH_LIST_TYPE_ACTION{
+    return{
+        type:'ADD_TO_WISHLIST',
+        id:id
+    }
+}
+export  function DeleteFromWishList(id:number):WISH_LIST_TYPE_ACTION{
+    return{
+        type:'REMOVE_FROM_WISHLIST',
+        id:id
+    }
+}
 
 export  function requestMovie(page:number):fetchDataAction{
     return {

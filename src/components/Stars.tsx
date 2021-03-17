@@ -6,7 +6,6 @@ interface starIterface{
 }
 
 const Stars:React.FC<starIterface>=({starsArray})=>{
-    
 
     return (
             <ul>
